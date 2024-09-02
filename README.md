@@ -74,6 +74,6 @@ The **N_TURTLEBOT** project consists of two main components:
 
 ## Contributors
 
-- Mohamed Newie - Project Lead  
+- Mohamed Newir - Project Lead  
 =======
 
