@@ -1,5 +1,5 @@
 # N_TURTLEBOT
-<<<<<<< HEAD
+
 
 Final Project for Advanced Robotics and Artificial Intelligence  
 Faculty of Engineering, Cairo University
@@ -77,4 +77,4 @@ The **N_TURTLEBOT** project consists of two main components:
 - Mohamed Newie - Project Lead  
 =======
 Final Project For Advanced Robotics And Artificial Inteligence ( MDPN-453 )At faculty of Engineering - Cairo University
->>>>>>> 40201df9ecb31ca5330943a56a4d043c168863c8
+
