@@ -76,5 +76,4 @@ The **N_TURTLEBOT** project consists of two main components:
 
 - Mohamed Newie - Project Lead  
 =======
-Final Project For Advanced Robotics And Artificial Inteligence ( MDPN-453 )At faculty of Engineering - Cairo University
 
