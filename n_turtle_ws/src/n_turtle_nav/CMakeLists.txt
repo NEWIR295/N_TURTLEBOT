@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   tf2_ros
+  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -74,10 +75,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   geometry_msgs#   nav_msgs#   sensor_msgs#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  geometry_msgs  nav_msgs  sensor_msgs   std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -111,7 +112,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES n_turtle_nav
-#  CATKIN_DEPENDS geometry_msgs move_base nav_msgs roscpp rospy sensor_msgs std_msgs tf tf2_ros
+ CATKIN_DEPENDS geometry_msgs move_base nav_msgs roscpp rospy sensor_msgs std_msgs tf tf2_ros
 #  DEPENDS system_lib
 )
 

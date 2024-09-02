@@ -54,7 +54,7 @@ if __name__ == "__main__":
     settings = termios.tcgetattr(sys.stdin)
 
     # Initialize ROS node and create publisher for cmd_vel topic
-    rospy.init_node('teleop_twist_keyboard')
+    rospy.init_node('n_turtle_keyboard')
     pub = rospy.Publisher('/N_Turtle_CMD_VEL', Twist, queue_size=1)
 
     # Initialize movement variables
