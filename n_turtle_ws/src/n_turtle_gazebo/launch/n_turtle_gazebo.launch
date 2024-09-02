@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Load the robot description -->
+    <param name="robot_description" textfile="$(find n_turtle_description)/urdf/n_turtle_withPlugins.urdf" />
+
+    <!-- Joint State Publisher GUI -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- Robot State Publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused" default="false" />
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="headless" default="false" />
+    <arg name="debug" default="false" />
+    <arg name="world_file" default="$(find n_turtle_gazebo)/worlds/turtlebot_world.world"/>
+
+    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be
+    launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_file)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="use_sim_time" value="$(arg use_sim_time)" />
+        <arg name="headless" value="$(arg headless)" />
+    </include>
+
+    <!-- Spawn a robot into Gazebo -->
+    <node name="n_turtle_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false"
+        args="-x 0 -y 0 -z 0 -Y 0 -urdf -param robot_description -model n_turtle_withPlugins">
+    </node>
+
+
+    <!-- RViz -->
+    <!-- <arg name="config" default="display" />
+    <node pkg="rviz" name="rviz" type="rviz" required="true"
+        args="-d $(find n_turtle_description)/rviz/$(arg config).rviz" output="screen" /> -->
+
+
+</launch>

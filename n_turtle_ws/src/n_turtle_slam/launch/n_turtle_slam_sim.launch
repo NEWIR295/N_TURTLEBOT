@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<!--simulation launch file-->
+<launch>
+
+    <!-- gazebo launch file-->
+    <include file="$(find n_turtle_gazebo)/launch/n_turtle_gazebo.launch" />
+
+    <!-- robot pose ekf launch file-->
+    <include file="$(find n_turtle_ctrl)/launch/ekf.launch" />
+
+    <!-- control robot by keyboard node -->
+    <node pkg="n_turtle_ctrl" type="n_turtle_keyboard_ctrl.py" name="n_turtle_keyboard_ctrl" output="screen" />
+
+    <arg name="scan_topic" default="scan" />
+    <arg name="base_frame" default="base_footprint" />
+    <arg name="odom_frame" default="odom" />
+
+    <!-- <param name="tf_cache_time" type="double" value="200.0" /> -->
+   
+    <node pkg="n_turtle_slam" type="dynamicTf.py" name="dynamicTf" output="screen"/>
+
+    <!-- static tf between base link and base footprint -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_footprint"
+        args="0.0 0.0 0.010 0 0 0  base_link base_footprint" />
+    <!-- static tf between base link and lidar link -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_laser"
+        args="-0.032 0 0.172 0 0 0 base_link base_scan" />
+    <!-- static tf between base link and imu link -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_imu"
+        args="-0.032 0 0.068 0 0 0 base_link imu_link" />
+    <!-- static tf between base link and camera link -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_camera"
+        args="-0.029 0.0 0.08 0 0 0 base_link camera_link" />
+
+    <!-- gmapping pkg setup -->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+        <param name="base_frame" value="$(arg base_frame)" />
+        <param name="odom_frame" value="$(arg odom_frame)" />
+        <param name="map_update_interval" value="5.0" />
+        <param name="maxUrange" value="6.0" />
+        <param name="maxRange" value="8.0" />
+        <param name="sigma" value="0.05" />
+        <param name="kernelSize" value="1" />
+        <param name="lstep" value="0.05" />
+        <param name="astep" value="0.05" />
+        <param name="iterations" value="5" />
+        <param name="lsigma" value="0.075" />
+        <param name="ogain" value="3.0" />
+        <param name="lskip" value="0" />
+        <param name="minimumScore" value="200" />
+        <param name="srr" value="0.05" />
+        <param name="srt" value="0.06" />
+        <param name="str" value="0.05" />
+        <param name="stt" value="0.06" />
+        <param name="linearUpdate" value="0.1" />
+        <param name="angularUpdate" value="0.1" />
+        <param name="temporalUpdate" value="-1.0" />
+        <param name="resampleThreshold" value="0.5" />
+        <param name="particles" value="100" />
+
+        <param name="xmin" value="-10.0" />
+        <param name="ymin" value="-10.0" />
+        <param name="xmax" value="10.0" />
+        <param name="ymax" value="10.0" />
+
+        <param name="delta" value="0.05" />
+        <param name="llsamplerange" value="0.01" />
+        <param name="llsamplestep" value="0.01" />
+        <param name="lasamplerange" value="0.005" />
+        <param name="lasamplestep" value="0.005" />
+        <remap from="scan" to="$(arg scan_topic)" />
+    </node>
+
+    <arg name="config" default="slam" />
+    <node pkg="rviz" type="rviz" name="rviz" output="screen"
+        args="-d $(find n_turtle_slam)/rviz/$(arg config).rviz" />
+
+</launch>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Define robot parameters all units are in m, m/s -->
+  <param name="wheel_radius" type="double" value=".20" />
+  <param name="max_vel" type="double" value="1.54" />
+  <param name="wheel_separation" type="double" value="0.83" />
+
+  <node pkg="n_turtle_ctrl" type="N_TurtleVel" name="N_TurtleVel" output="screen" />
+  <node pkg="n_turtle_ctrl" type="N_TurtleVelENC" name="N_TurtleVelENC" output="screen" />
+
+  <!-- arduino node initialization -->
+  <node pkg="rosserial_python" type="serial_node.py" name="arduinoNode" output="screen">
+    <param name="port" value="/dev/ttyACM0" />
+    <param name="baud" value="38400" />
+  </node>
+  
+</launch>
