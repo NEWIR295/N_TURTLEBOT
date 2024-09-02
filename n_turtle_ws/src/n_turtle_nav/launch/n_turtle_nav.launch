@@ -46,7 +46,7 @@
         args="-0.029 0.0 0.08 0 0 0 base_link camera_link" />
 
     <!-- Map server -->
-    <arg name="map_file" default="$(find n_turtle_slam)/maps/turtleMap.yaml" />
+    <arg name="map_file" default="$(find n_turtle_slam)/maps/myBalacaMap.yaml" />
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
 
     <!-- AMCL for localization -->
