@@ -1,7 +1,7 @@
 # N_TURTLEBOT
 
 
-Final Project for Advanced Robotics and Artificial Intelligence  
+Final Project for Advanced Robotics and Artificial Intelligence, Spring 2024  
 Faculty of Engineering, Cairo University
 
 ## Project Overview
