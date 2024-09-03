@@ -52,6 +52,7 @@ int main(int argc, char **argv)
     // Go back to beginning if the selection is invalid.
     if ((user_choice_x > 1) && (user_choice_x<9) && (user_choice_y >1) && (user_choice_y<9))
     {
+      cout << "\nThe selection is invalid." << endl;
       continue;
     }
     */

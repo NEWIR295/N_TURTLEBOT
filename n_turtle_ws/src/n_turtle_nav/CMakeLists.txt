@@ -213,6 +213,12 @@ include_directories(
 # catkin_add_nosetests(test)
 #for N_TurtleVelENC node
 
+#Simulation Goal
 add_executable(N_TurtleGoal src/n_turtle_goal.cpp )
 target_link_libraries(N_TurtleGoal ${catkin_LIBRARIES})
 add_dependencies(N_TurtleGoal n_turtle_nav_generate_messages_cpp)
+
+#HardWare Goal
+add_executable(N_TurtleGoal_Real src/n_turtle_goal_myBalcon.cpp )
+target_link_libraries(N_TurtleGoal_Real ${catkin_LIBRARIES})
+add_dependencies(N_TurtleGoal_Real n_turtle_nav_generate_messages_cpp)
