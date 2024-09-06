@@ -11,7 +11,7 @@ void cb(const std_msgs::Float32MultiArray &wheel_ang_vel){
 int main(int argc, char** argv){
   ros::init(argc, argv, "N_TurtleVelENC");
   ros::NodeHandle n;
-  ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("/N_TurtleVelENC", 50);
+  ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("/odom", 50);
   ros::Subscriber enc_sub = n.subscribe("/encoder", 10, &cb);
   currentWheelAngVelocity.data.resize(2);
   N_TURTLE_CTRL n_turtle;

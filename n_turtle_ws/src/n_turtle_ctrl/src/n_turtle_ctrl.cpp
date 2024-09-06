@@ -49,7 +49,7 @@ nav_msgs::Odometry N_TURTLE_CTRL::distance_covered_enc(float dt, float w_l, floa
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time;
     odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "Agribot_base_link";
+    odom_trans.child_frame_id = "base_link";
     odom_trans.transform.translation.x = x_initial;
     odom_trans.transform.translation.y = y_initial;
     odom_trans.transform.translation.z = 0.0;

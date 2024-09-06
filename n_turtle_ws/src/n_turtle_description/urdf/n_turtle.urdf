@@ -148,11 +148,11 @@
   <!-- liDAR link joint -->
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="base_scan"/>
+    <child link="laser"/>
     <origin rpy="0 0 0" xyz="-0.032 0 0.172"/>
   </joint>
   <!-- liDAR link -->
-  <link name="base_scan">
+  <link name="laser">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
       <geometry>

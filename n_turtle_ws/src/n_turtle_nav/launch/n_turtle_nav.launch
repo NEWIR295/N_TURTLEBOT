@@ -31,7 +31,7 @@
         args="0.0 0.0 0.010 0 0 0  base_link base_footprint" />
     <!-- static tf between base link and lidar link -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_laser"
-        args="-0.032 0 0.172 0 0 0 base_link base_scan" />
+        args="-0.032 0 0.172 0 0 0 base_link laser" />
     <!-- static tf between base link and imu link -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_imu"
         args="-0.032 0 0.068 0 0 0 base_link imu_link" />

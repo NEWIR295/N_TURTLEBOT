@@ -3,38 +3,41 @@
 <launch>
 
     <!-- Load the robot description -->
-    <param name="robot_description" textfile="$(find n_turtle_description)/urdf/n_turtle.urdf" />
+    <!-- <param name="robot_description" textfile="$(find n_turtle_description)/urdf/n_turtle.urdf" /> -->
 
     <!-- Joint State Publisher  -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
 
     <!-- Robot State Publisher -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
+
+    <include file="$(find n_turtle_gazebo)/launch/n_turtle_gazebo_real.launch" />
+
 
     <arg name="scan_topic" default="scan" />
     <arg name="base_frame" default="base_footprint" />
     <arg name="odom_frame" default="odom" />
+    <param name="/use_sim_time" value="true"/>
 
     <!-- hardware control pkg -->
-    <include file="$(find n_turtle_ctrl)/launch/n_turtle_ctrl.launch" />
-
-    <!-- control robot by keyboard node -->
-    <node pkg="n_turtle_ctrl" type="n_turtle_keyboard_ctrl.py" name="n_turtle_keyboard_ctrl"
-        output="screen" />
-
-    <!-- <param name="tf_cache_time" type="double" value="200.0" /> -->
-
-    <node pkg="n_turtle_slam" type="dynamicTf.py" name="dynamicTf" output="screen"/>
+    <!-- <include file="$(find n_turtle_ctrl)/launch/n_turtle_ctrl.launch" /> -->
 
     <!-- robot pose ekf launch file-->
-    <include file="$(find n_turtle_ctrl)/launch/ekf.launch" />
+    <!-- <include file="$(find n_turtle_ctrl)/launch/ekf.launch" /> -->
+    <!-- control robot by keyboard node -->
+    <!-- <node pkg="n_turtle_ctrl" type="n_turtle_keyboard_ctrl.py" name="n_turtle_keyboard_ctrl"
+        output="screen" /> -->
+
+    <param name="tf_cache_time" type="double" value="200.0" />
+
+    <node pkg="n_turtle_slam" type="dynamicTf.py" name="dynamicTf" output="screen" />
 
     <!-- static tf between base link and base footprint -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_footprint"
         args="0.0 0.0 0.010 0 0 0  base_link base_footprint" />
     <!-- static tf between base link and lidar link -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_laser"
-        args="-0.032 0 0.172 0 0 0 base_link base_scan" />
+        args="-0.032 0 0.172 0 0 0 base_link laser" />
     <!-- static tf between base link and imu link -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_imu"
         args="-0.032 0 0.068 0 0 0 base_link imu_link" />

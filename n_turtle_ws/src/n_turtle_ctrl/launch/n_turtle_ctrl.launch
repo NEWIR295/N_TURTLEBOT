@@ -10,9 +10,9 @@
   <node pkg="n_turtle_ctrl" type="N_TurtleVelENC" name="N_TurtleVelENC" output="screen" />
 
   <!-- arduino node initialization -->
-  <node pkg="rosserial_python" type="serial_node.py" name="arduinoNode" output="screen">
+  <!-- <node pkg="rosserial_python" type="serial_node.py" name="arduinoNode" output="screen">
     <param name="port" value="/dev/ttyACM0" />
     <param name="baud" value="38400" />
-  </node>
+  </node> -->
   
 </launch>
