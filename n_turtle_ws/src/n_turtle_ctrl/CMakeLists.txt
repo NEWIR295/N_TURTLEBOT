@@ -220,3 +220,8 @@ add_dependencies(N_TurtleVel n_turtle_ctrl_generate_messages_cpp)
 add_executable(N_TurtleVelENC src/n_turtle_ctrl_sub.cpp src/n_turtle_ctrl.cpp)
 target_link_libraries(N_TurtleVelENC ${catkin_LIBRARIES})
 add_dependencies(N_TurtleVelENC n_turtle_ctrl_generate_messages_cpp)
+
+#for N_TurtleVelTwist node
+add_executable(N_turtleTwist src/n_turtle_ctrl_twist.cpp src/n_turtle_ctrl.cpp)
+target_link_libraries(N_turtleTwist ${catkin_LIBRARIES})
+add_dependencies(N_turtleTwist n_turtle_ctrl_generate_messages_cpp)

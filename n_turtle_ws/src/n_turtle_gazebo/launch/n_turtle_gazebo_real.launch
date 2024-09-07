@@ -16,7 +16,7 @@
     <arg name="gui" default="true" />
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
-    <arg name="world_file" default="$(find n_turtle_gazebo)/worlds/turtlebot_world.world"/>
+    <arg name="world_file" default="$(find gazebo_ros)/worlds/empty.world"/>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be
     launched -->

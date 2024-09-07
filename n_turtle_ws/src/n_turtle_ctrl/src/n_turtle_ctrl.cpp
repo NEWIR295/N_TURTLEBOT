@@ -49,7 +49,7 @@ nav_msgs::Odometry N_TURTLE_CTRL::distance_covered_enc(float dt, float w_l, floa
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time;
     odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base_link";
+    odom_trans.child_frame_id = "base_footprint";
     odom_trans.transform.translation.x = x_initial;
     odom_trans.transform.translation.y = y_initial;
     odom_trans.transform.translation.z = 0.0;
@@ -64,7 +64,7 @@ nav_msgs::Odometry N_TURTLE_CTRL::distance_covered_enc(float dt, float w_l, floa
     odom.pose.pose.position.y = y_initial;
     odom.pose.pose.position.z = 0.0;
     odom.pose.pose.orientation = odom_quat;
-    odom.child_frame_id = "base_link";
+    odom.child_frame_id = "base_footprint";
     odom.twist.twist.linear.x = result[0];
     odom.twist.twist.linear.y = result[1];
     odom.twist.twist.angular.z = result[2];

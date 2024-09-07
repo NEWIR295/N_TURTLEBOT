@@ -10,7 +10,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import imutils
 
 # Replace the below URL with your own. Make sure to add "/shot.jpg" at last.
-url = "http://192.168.250.80:8080/shot.jpg"
+url = "http://192.168.45.254:8080/shot.jpg"
 
 # Colors for bounding box and text
 DARK_GREEN = (0, 100, 0)  # Dark Green color for the box
