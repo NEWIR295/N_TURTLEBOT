@@ -9,7 +9,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
 # Replace the below URL with your own. Make sure to add "/shot.jpg" at last.
-url = "http://192.168.1.4:8080/shot.jpg"
+url = "http://192.168.45.254:8080/shot.jpg"
 
 def fetch_and_publish():
     # Initialize the ROS node

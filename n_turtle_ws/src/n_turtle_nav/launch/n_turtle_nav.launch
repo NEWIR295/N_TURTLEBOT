@@ -2,15 +2,17 @@
 
 <!-- hardware launch file -->
 <launch>
+    <include file="$(find n_turtle_gazebo)/launch/n_turtle_gazebo_real.launch" />
+
 
     <!-- Load the robot description -->
-    <param name="robot_description" textfile="$(find n_turtle_description)/urdf/n_turtle.urdf" />
+    <!-- <param name="robot_description" textfile="$(find n_turtle_description)/urdf/n_turtle.urdf" /> -->
 
     <!-- Joint State Publisher -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
 
     <!-- Robot State Publisher -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
 
     <!-- hardware control pkg -->
     <include file="$(find n_turtle_ctrl)/launch/n_turtle_ctrl.launch" />
@@ -22,9 +24,9 @@
 
     <!-- <param name="tf_cache_time" type="double" value="200.0" /> -->
     <node pkg="n_turtle_slam" type="dynamicTf.py" name="dynamicTf" output="screen" />
-    <node pkg="n_turtle_nav" type="convertMsg.py" name="convertMsg" output="screen" />
+    <!-- <node pkg="n_turtle_nav" type="convertMsg.py" name="convertMsg" output="screen" /> -->
 
-    <include file="$(find n_turtle_ctrl)/launch/ekf.launch" />
+    <!-- <include file="$(find n_turtle_ctrl)/launch/ekf.launch" /> -->
 
     <!-- static tf between base link and base footprint -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_footprint"
@@ -40,10 +42,10 @@
         args="-0.029 0.0 0.08 0 0 0 base_link camera_link" />
 
     <!-- robot pose ekf launch file-->
-    <include file="$(find n_turtle_ctrl)/launch/ekf.launch" />
+    <!-- <include file="$(find n_turtle_ctrl)/launch/ekf.launch" /> -->
 
     <!-- Map server -->
-    <arg name="map_file" default="$(find n_turtle_slam)/maps/myBalacaMap.yaml" />
+    <arg name="map_file" default="$(find n_turtle_slam)/maps/myBalcon.yaml" />
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
 
     <!-- AMCL for localization -->
